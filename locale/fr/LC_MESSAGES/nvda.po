@@ -1,0 +1,581 @@
+# French translations for NVDA Audio Processor.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the NVDA Audio Processor project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: NVDA Audio Processor 1.0.30\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-08-30 14:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "1176 Compressor disabled"
+msgstr "1176 Compressor désactivé"
+
+msgid "1176 Compressor enabled"
+msgstr "1176 Compressor activé"
+
+#, python-brace-format
+msgid "A user preset named '{name}' already exists. Replace it?"
+msgstr "Un preset utilisateur nommé '{name}' existe déjà. Le remplacer ?"
+
+msgid "All NVDA audio"
+msgstr "Tout l’audio de NVDA"
+
+msgid "Audio Device"
+msgstr "Périphérique audio"
+
+msgid "Audio Device:"
+msgstr "Périphérique audio :"
+
+msgid "Audio Processor"
+msgstr "Processeur audio"
+
+msgid "Audio Processor disabled"
+msgstr "Processeur audio désactivé"
+
+msgid "Audio Processor enabled"
+msgstr "Processeur audio activé"
+
+msgid "Audio Processor..."
+msgstr "Processeur audio..."
+
+#, python-brace-format
+msgid "Audio device not available: {name}"
+msgstr "Périphérique audio indisponible : {name}"
+
+msgid "Audio processing enabled"
+msgstr "Traitement audio activé"
+
+msgid "Current settings"
+msgstr "Réglages actuels"
+
+msgid "DSP error, neutral audio"
+msgstr "erreur DSP, audio neutre"
+
+msgid "Decrease 1176 Attack."
+msgstr "Diminue 1176 Attack."
+
+msgid "Decrease 1176 Input."
+msgstr "Diminue 1176 Input."
+
+msgid "Decrease 1176 Output."
+msgstr "Diminue 1176 Output."
+
+msgid "Decrease 1176 Release."
+msgstr "Diminue 1176 Release."
+
+msgid "Decrease Band 1 Frequency."
+msgstr "Diminue Band 1 Frequency."
+
+msgid "Decrease Band 1 Gain."
+msgstr "Diminue Band 1 Gain."
+
+msgid "Decrease Band 1 Q."
+msgstr "Diminue Band 1 Q."
+
+msgid "Decrease Band 2 Frequency."
+msgstr "Diminue Band 2 Frequency."
+
+msgid "Decrease Band 2 Gain."
+msgstr "Diminue Band 2 Gain."
+
+msgid "Decrease Band 2 Q."
+msgstr "Diminue Band 2 Q."
+
+msgid "Decrease Band 3 Frequency."
+msgstr "Diminue Band 3 Frequency."
+
+msgid "Decrease Band 3 Gain."
+msgstr "Diminue Band 3 Gain."
+
+msgid "Decrease Band 3 Q."
+msgstr "Diminue Band 3 Q."
+
+msgid "Decrease Band 4 Frequency."
+msgstr "Diminue Band 4 Frequency."
+
+msgid "Decrease Band 4 Gain."
+msgstr "Diminue Band 4 Gain."
+
+msgid "Decrease Band 4 Q."
+msgstr "Diminue Band 4 Q."
+
+msgid "Decrease Chorus Depth."
+msgstr "Diminue Chorus Depth."
+
+msgid "Decrease Chorus Rate."
+msgstr "Diminue Chorus Rate."
+
+msgid "Decrease Chorus Send."
+msgstr "Diminue Chorus Send."
+
+msgid "Decrease Chorus Width."
+msgstr "Diminue Chorus Width."
+
+msgid "Decrease Delay Feedback."
+msgstr "Diminue Delay Feedback."
+
+msgid "Decrease Delay Ping-Pong."
+msgstr "Diminue Delay Ping-Pong."
+
+msgid "Decrease Delay Send."
+msgstr "Diminue Delay Send."
+
+msgid "Decrease Delay Time."
+msgstr "Diminue Delay Time."
+
+msgid "Decrease High Pass Frequency."
+msgstr "Diminue High Pass Frequency."
+
+msgid "Decrease High Pass LFO Depth."
+msgstr "Diminuer High Pass LFO Depth."
+
+msgid "Decrease High Pass Resonance."
+msgstr "Diminuer High Pass Resonance."
+
+msgid "Decrease LFO Rate."
+msgstr "Diminuer LFO Rate."
+
+msgid "Decrease LFO Smoothing."
+msgstr "Diminuer LFO Smoothing."
+
+msgid "Decrease Limiter Ceiling."
+msgstr "Diminue Limiter Ceiling."
+
+msgid "Decrease Limiter Release."
+msgstr "Diminue Limiter Release."
+
+msgid "Decrease Low Pass Frequency."
+msgstr "Diminue Low Pass Frequency."
+
+msgid "Decrease Low Pass LFO Depth."
+msgstr "Diminuer Low Pass LFO Depth."
+
+msgid "Decrease Low Pass Resonance."
+msgstr "Diminuer Low Pass Resonance."
+
+msgid "Decrease Master Gain."
+msgstr "Diminue Master Gain."
+
+msgid "Decrease Pan LFO Depth."
+msgstr "Diminue Pan LFO Depth."
+
+msgid "Decrease Reverb Damping."
+msgstr "Diminue Reverb Damping."
+
+msgid "Decrease Reverb Decay."
+msgstr "Diminue Reverb Decay."
+
+msgid "Decrease Reverb Send."
+msgstr "Diminue Reverb Send."
+
+msgid "Decrease Reverb Size."
+msgstr "Diminue Reverb Size."
+
+msgid "Delay tail disabled"
+msgstr "Queue de Delay désactivée"
+
+msgid "Delay tail enabled"
+msgstr "Queue de Delay activée"
+
+msgid "Delete preset"
+msgstr "Supprimer le preset"
+
+#, python-brace-format
+msgid "Delete user preset '{name}'?"
+msgstr "Supprimer le preset utilisateur « {name} » ?"
+
+msgid "Enable or disable 1176 Compressor."
+msgstr "Active ou désactive 1176 Compressor."
+
+msgid "Enable or disable Audio Processor."
+msgstr "Active ou désactive le Processeur audio."
+
+msgid "Enable or disable Delay tail."
+msgstr "Activer ou désactiver la queue de Delay."
+
+msgid "Enable or disable Limiter."
+msgstr "Active ou désactive Limiter."
+
+msgid "Enable or disable Reverb tail."
+msgstr "Activer ou désactiver la queue de Reverb."
+
+msgid "Enable or disable Stereo Chorus."
+msgstr "Active ou désactive Stereo Chorus."
+
+msgid "Enable or disable Stereo Delay."
+msgstr "Active ou désactive Stereo Delay."
+
+msgid "Enable or disable Stereo Reverb."
+msgstr "Active ou désactive Stereo Reverb."
+
+msgid "Enter a name for the preset:"
+msgstr "Saisissez un nom pour le preset :"
+
+msgid "Enter the new preset name:"
+msgstr "Saisissez le nouveau nom du preset :"
+
+msgid "Factory presets cannot be deleted."
+msgstr "Les presets Factory ne peuvent pas être supprimés."
+
+msgid "Factory presets cannot be renamed."
+msgstr "Les presets Factory ne peuvent pas être renommés."
+
+#, python-brace-format
+msgid "Factory: {name}"
+msgstr "D'usine : {name}"
+
+msgid "Increase 1176 Attack."
+msgstr "Augmente 1176 Attack."
+
+msgid "Increase 1176 Input."
+msgstr "Augmente 1176 Input."
+
+msgid "Increase 1176 Output."
+msgstr "Augmente 1176 Output."
+
+msgid "Increase 1176 Release."
+msgstr "Augmente 1176 Release."
+
+msgid "Increase Band 1 Frequency."
+msgstr "Augmente Band 1 Frequency."
+
+msgid "Increase Band 1 Gain."
+msgstr "Augmente Band 1 Gain."
+
+msgid "Increase Band 1 Q."
+msgstr "Augmente Band 1 Q."
+
+msgid "Increase Band 2 Frequency."
+msgstr "Augmente Band 2 Frequency."
+
+msgid "Increase Band 2 Gain."
+msgstr "Augmente Band 2 Gain."
+
+msgid "Increase Band 2 Q."
+msgstr "Augmente Band 2 Q."
+
+msgid "Increase Band 3 Frequency."
+msgstr "Augmente Band 3 Frequency."
+
+msgid "Increase Band 3 Gain."
+msgstr "Augmente Band 3 Gain."
+
+msgid "Increase Band 3 Q."
+msgstr "Augmente Band 3 Q."
+
+msgid "Increase Band 4 Frequency."
+msgstr "Augmente Band 4 Frequency."
+
+msgid "Increase Band 4 Gain."
+msgstr "Augmente Band 4 Gain."
+
+msgid "Increase Band 4 Q."
+msgstr "Augmente Band 4 Q."
+
+msgid "Increase Chorus Depth."
+msgstr "Augmente Chorus Depth."
+
+msgid "Increase Chorus Rate."
+msgstr "Augmente Chorus Rate."
+
+msgid "Increase Chorus Send."
+msgstr "Augmente Chorus Send."
+
+msgid "Increase Chorus Width."
+msgstr "Augmente Chorus Width."
+
+msgid "Increase Delay Feedback."
+msgstr "Augmente Delay Feedback."
+
+msgid "Increase Delay Ping-Pong."
+msgstr "Augmente Delay Ping-Pong."
+
+msgid "Increase Delay Send."
+msgstr "Augmente Delay Send."
+
+msgid "Increase Delay Time."
+msgstr "Augmente Delay Time."
+
+msgid "Increase High Pass Frequency."
+msgstr "Augmente High Pass Frequency."
+
+msgid "Increase High Pass LFO Depth."
+msgstr "Augmenter High Pass LFO Depth."
+
+msgid "Increase High Pass Resonance."
+msgstr "Augmenter High Pass Resonance."
+
+msgid "Increase LFO Rate."
+msgstr "Augmenter LFO Rate."
+
+msgid "Increase LFO Smoothing."
+msgstr "Augmenter LFO Smoothing."
+
+msgid "Increase Limiter Ceiling."
+msgstr "Augmente Limiter Ceiling."
+
+msgid "Increase Limiter Release."
+msgstr "Augmente Limiter Release."
+
+msgid "Increase Low Pass Frequency."
+msgstr "Augmente Low Pass Frequency."
+
+msgid "Increase Low Pass LFO Depth."
+msgstr "Augmenter Low Pass LFO Depth."
+
+msgid "Increase Low Pass Resonance."
+msgstr "Augmenter Low Pass Resonance."
+
+msgid "Increase Master Gain."
+msgstr "Augmente Master Gain."
+
+msgid "Increase Pan LFO Depth."
+msgstr "Augmente Pan LFO Depth."
+
+msgid "Increase Reverb Damping."
+msgstr "Augmente Reverb Damping."
+
+msgid "Increase Reverb Decay."
+msgstr "Augmente Reverb Decay."
+
+msgid "Increase Reverb Send."
+msgstr "Augmente Reverb Send."
+
+msgid "Increase Reverb Size."
+msgstr "Augmente Reverb Size."
+
+#, python-brace-format
+msgid "Last stream: {purpose}, {sampleRate} Hz, {bits} bit, {channels}."
+msgstr "Dernier flux : {purpose}, {sampleRate} Hz, {bits} bit, {channels}."
+
+msgid "Limiter disabled"
+msgstr "Limiter désactivé"
+
+msgid "Limiter enabled"
+msgstr "Limiter activé"
+
+msgid "Lock NVDA Audio Device"
+msgstr "Verrouiller le périphérique audio NVDA"
+
+msgid "Move Pan left."
+msgstr "Déplace Pan vers la gauche."
+
+msgid "Move Pan right."
+msgstr "Déplace Pan vers la droite."
+
+msgid "No WavePlayer stream has been intercepted yet."
+msgstr "Aucun flux WavePlayer n’a encore été intercepté."
+
+msgid "No audio output devices are available."
+msgstr "Aucun périphérique de sortie audio n’est disponible."
+
+msgid "No numeric parameter selected"
+msgstr "Aucun paramètre numérique sélectionné"
+
+msgid "Open Audio Processor settings."
+msgstr "Ouvre les paramètres du Processeur audio."
+
+#, python-brace-format
+msgid "Preset deleted: {name}"
+msgstr "Preset supprimé : {name}"
+
+#, python-brace-format
+msgid "Preset loaded: {name}"
+msgstr "Preset chargé : {name}"
+
+msgid "Preset name cannot be empty."
+msgstr "Le nom du preset ne peut pas être vide."
+
+#, python-brace-format
+msgid "Preset renamed: {oldName} to {newName}"
+msgstr "Preset renommé : {oldName} en {newName}"
+
+#, python-brace-format
+msgid "Preset saved: {name}"
+msgstr "Preset enregistré : {name}"
+
+msgid "Process"
+msgstr "Traiter"
+
+#, python-brace-format
+msgid "Process {target}"
+msgstr "Traiter {target}"
+
+msgid "Process:"
+msgstr "Traiter :"
+
+msgid "Rename preset"
+msgstr "Renommer le preset"
+
+msgid "Replace preset"
+msgstr "Remplacer le preset"
+
+msgid "Report intercepted audio format"
+msgstr "Annoncer le format audio intercepté"
+
+msgid "Report the format of the last intercepted audio stream."
+msgstr "Annonce le format du dernier flux audio intercepté."
+
+msgid "Reverb tail disabled"
+msgstr "Queue de Reverb désactivée"
+
+msgid "Reverb tail enabled"
+msgstr "Queue de Reverb activée"
+
+msgid "Save preset as"
+msgstr "Enregistrer le preset sous"
+
+msgid "Select a user preset to delete."
+msgstr "Sélectionnez un preset utilisateur à supprimer."
+
+msgid "Select a user preset to rename."
+msgstr "Sélectionnez un preset utilisateur à renommer."
+
+msgid "Select the next 1176 Ratio."
+msgstr "Sélectionne la valeur suivante de 1176 Ratio."
+
+msgid "Select the next Chorus Mode."
+msgstr "Sélectionne la valeur suivante de Chorus Mode."
+
+msgid "Select the next LFO Waveform."
+msgstr "Sélectionner la LFO Waveform suivante."
+
+msgid "Select the next audio type to process."
+msgstr "Sélectionne le type d’audio suivant à traiter."
+
+msgid "Select the previous 1176 Ratio."
+msgstr "Sélectionne la valeur précédente de 1176 Ratio."
+
+msgid "Select the previous Chorus Mode."
+msgstr "Sélectionne la valeur précédente de Chorus Mode."
+
+msgid "Select the previous LFO Waveform."
+msgstr "Sélectionner la LFO Waveform précédente."
+
+msgid "Select the previous audio type to process."
+msgstr "Sélectionne le type d’audio précédent à traiter."
+
+msgid "Sounds only"
+msgstr "Sons uniquement"
+
+msgid "Speech only"
+msgstr "Voix uniquement"
+
+#, python-brace-format
+msgid "Step {step}"
+msgstr "Étape {step}"
+
+msgid "Stereo Chorus disabled"
+msgstr "Stereo Chorus désactivé"
+
+msgid "Stereo Chorus enabled"
+msgstr "Stereo Chorus activé"
+
+msgid "Stereo Delay disabled"
+msgstr "Stereo Delay désactivé"
+
+msgid "Stereo Delay enabled"
+msgstr "Stereo Delay activé"
+
+msgid "Stereo Reverb disabled"
+msgstr "Stereo Reverb désactivé"
+
+msgid "Stereo Reverb enabled"
+msgstr "Stereo Reverb activé"
+
+msgid "Unable to delete preset."
+msgstr "Impossible de supprimer le preset."
+
+msgid "Unable to load preset."
+msgstr "Impossible de charger le preset."
+
+#, python-brace-format
+msgid ""
+"Unable to open Audio Processor.\n"
+"\n"
+"{errorType}: {error}"
+msgstr ""
+"Impossible d’ouvrir le Processeur audio.\n"
+"\n"
+"{errorType}: {error}"
+
+msgid "Unable to open Audio Processor. Check the NVDA log."
+msgstr "Impossible d’ouvrir le Processeur audio. Consulte le journal de NVDA."
+
+msgid "Unable to rename preset."
+msgstr "Impossible de renommer le preset."
+
+msgid "Unable to save preset."
+msgstr "Impossible d'enregistrer le preset."
+
+#, python-brace-format
+msgid "Unavailable: {name}"
+msgstr "Indisponible : {name}"
+
+#, python-brace-format
+msgid "User: {name}"
+msgstr "Utilisateur : {name}"
+
+msgid "excluded by Process selector"
+msgstr "exclu par le sélecteur Traiter"
+
+msgid "excluded by Process selector, neutral mono→stereo"
+msgstr "exclu par le sélecteur Traiter, mono→stereo neutre"
+
+msgid "locked audio device unavailable; audio suppressed"
+msgstr "périphérique audio verrouillé indisponible ; audio supprimé"
+
+msgid "no stream"
+msgstr "aucun flux"
+
+msgid "processed"
+msgstr "traité"
+
+msgid "sounds"
+msgstr "sons"
+
+msgid "speech"
+msgstr "voix"
+
+msgid "unknown"
+msgstr "inconnu"
+
+msgid "unknown audio device"
+msgstr "périphérique audio inconnu"
+
+msgid "unreadable buffer"
+msgstr "buffer illisible"
+
+msgid "unsupported format"
+msgstr "format non pris en charge"
+
+msgid "waiting for locked audio device routing"
+msgstr "en attente du routage vers le périphérique audio verrouillé"
+
+#, python-brace-format
+msgid "{channels} channel"
+msgstr "{channels} canal"
+
+#, python-brace-format
+msgid "{channels} channels"
+msgstr "{channels} canaux"
+
+#, python-brace-format
+msgid "{source}→{output} channels"
+msgstr "{source}→{output} canaux"
+
+#, python-brace-format
+msgid "{streamInfo} Status: {state}. Processed chunks: {chunks}."
+msgstr "{streamInfo} État : {state}. Blocs traités : {chunks}."

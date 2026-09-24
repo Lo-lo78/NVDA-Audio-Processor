@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "presets": [
+    {
+      "name": "Flat",
+      "settings": {}
+    },
+    {
+      "name": "Bass Boost",
+      "settings": {
+        "band1Freq": 90.0,
+        "band1Gain": 6.0,
+        "band1Q": 0.75,
+        "band2Freq": 260.0,
+        "band2Gain": 2.0,
+        "band2Q": 0.9
+      }
+    },
+    {
+      "name": "Deep Bass",
+      "settings": {
+        "highPassHz": 25.0,
+        "band1Freq": 70.0,
+        "band1Gain": 9.0,
+        "band1Q": 0.8,
+        "band2Freq": 220.0,
+        "band2Gain": 2.5,
+        "band2Q": 0.9
+      }
+    },
+    {
+      "name": "Tight Bass",
+      "settings": {
+        "highPassHz": 35.0,
+        "band1Freq": 110.0,
+        "band1Gain": 5.0,
+        "band1Q": 1.2,
+        "band2Freq": 320.0,
+        "band2Gain": -2.0,
+        "band2Q": 1.0
+      }
+    },
+    {
+      "name": "Warm Voice",
+      "settings": {
+        "band1Freq": 140.0,
+        "band1Gain": 2.5,
+        "band1Q": 0.9,
+        "band2Freq": 380.0,
+        "band2Gain": 1.5,
+        "band2Q": 0.9,
+        "band4Freq": 8000.0,
+        "band4Gain": -1.0,
+        "band4Q": 0.8
+      }
+    },
+    {
+      "name": "Warm and Clear",
+      "settings": {
+        "band1Freq": 120.0,
+        "band1Gain": 2.0,
+        "band1Q": 0.8,
+        "band2Freq": 420.0,
+        "band2Gain": -1.0,
+        "band2Q": 1.0,
+        "band3Freq": 2600.0,
+        "band3Gain": 2.5,
+        "band3Q": 1.0,
+        "band4Freq": 9000.0,
+        "band4Gain": 1.0,
+        "band4Q": 0.8
+      }
+    },
+    {
+      "name": "Vocal Presence",
+      "settings": {
+        "band2Freq": 500.0,
+        "band2Gain": -1.5,
+        "band2Q": 1.0,
+        "band3Freq": 3000.0,
+        "band3Gain": 4.0,
+        "band3Q": 1.1
+      }
+    },
+    {
+      "name": "Speech Clarity",
+      "settings": {
+        "highPassHz": 80.0,
+        "band2Freq": 350.0,
+        "band2Gain": -2.0,
+        "band2Q": 1.1,
+        "band3Freq": 2500.0,
+        "band3Gain": 3.0,
+        "band3Q": 1.0,
+        "band4Freq": 7000.0,
+        "band4Gain": 1.5,
+        "band4Q": 0.9
+      }
+    },
+    {
+      "name": "Bright Voice",
+      "settings": {
+        "band3Freq": 3500.0,
+        "band3Gain": 2.0,
+        "band3Q": 1.0,
+        "band4Freq": 9000.0,
+        "band4Gain": 5.0,
+        "band4Q": 0.8
+      }
+    },
+    {
+      "name": "Air Boost",
+      "settings": {
+        "band4Freq": 12000.0,
+        "band4Gain": 6.0,
+        "band4Q": 0.7
+      }
+    },
+    {
+      "name": "Treble Boost",
+      "settings": {
+        "band4Freq": 7500.0,
+        "band4Gain": 6.0,
+        "band4Q": 0.8
+      }
+    },
+    {
+      "name": "Treble Softener",
+      "settings": {
+        "lowPassHz": 11000.0,
+        "band4Freq": 7000.0,
+        "band4Gain": -4.0,
+        "band4Q": 0.9
+      }
+    },
+    {
+      "name": "Low Cut Speech",
+      "settings": {
+        "highPassHz": 120.0,
+        "band1Freq": 160.0,
+        "band1Gain": -2.0,
+        "band1Q": 0.9
+      }
+    },
+    {
+      "name": "Telephone",
+      "settings": {
+        "highPassHz": 300.0,
+        "lowPassHz": 3400.0,
+        "band2Freq": 900.0,
+        "band2Gain": 3.0,
+        "band2Q": 1.0,
+        "band3Freq": 2400.0,
+        "band3Gain": 4.0,
+        "band3Q": 1.2
+      }
+    },
+    {
+      "name": "Radio Voice",
+      "settings": {
+        "highPassHz": 120.0,
+        "lowPassHz": 7000.0,
+        "band1Freq": 180.0,
+        "band1Gain": 2.0,
+        "band3Freq": 2500.0,
+        "band3Gain": 3.0,
+        "compressorEnabled": true,
+        "compressorInputDb": 6.0,
+        "compressorOutputDb": 1.0,
+        "compressorRatio": "4:1",
+        "compressorAttackUs": 250.0,
+        "compressorReleaseMs": 220.0
+      }
+    },
+    {
+      "name": "Small Speaker",
+      "settings": {
+        "highPassHz": 250.0,
+        "lowPassHz": 5500.0,
+        "band2Freq": 700.0,
+        "band2Gain": 4.0,
+        "band2Q": 1.0,
+        "band3Freq": 2500.0,
+        "band3Gain": 2.0,
+        "band3Q": 1.1
+      }
+    },
+    {
+      "name": "Broadcast Light",
+      "settings": {
+        "highPassHz": 70.0,
+        "band1Freq": 120.0,
+        "band1Gain": 1.5,
+        "band3Freq": 2800.0,
+        "band3Gain": 2.0,
+        "compressorEnabled": true,
+        "compressorInputDb": 5.0,
+        "compressorOutputDb": 1.0,
+        "compressorRatio": "4:1",
+        "compressorAttackUs": 300.0,
+        "compressorReleaseMs": 250.0
+      }
+    },
+    {
+      "name": "Broadcast Strong",
+      "settings": {
+        "highPassHz": 80.0,
+        "band1Freq": 130.0,
+        "band1Gain": 2.0,
+        "band3Freq": 3000.0,
+        "band3Gain": 2.5,
+        "compressorEnabled": true,
+        "compressorInputDb": 10.0,
+        "compressorOutputDb": 2.0,
+        "compressorRatio": "8:1",
+        "compressorAttackUs": 150.0,
+        "compressorReleaseMs": 180.0
+      }
+    },
+    {
+      "name": "Gentle Compression",
+      "settings": {
+        "compressorEnabled": true,
+        "compressorInputDb": 4.0,
+        "compressorOutputDb": 1.0,
+        "compressorRatio": "4:1",
+        "compressorAttackUs": 400.0,
+        "compressorReleaseMs": 300.0
+      }
+    },
+    {
+      "name": "Strong Compression",
+      "settings": {
+        "compressorEnabled": true,
+        "compressorInputDb": 12.0,
+        "compressorOutputDb": 2.0,
+        "compressorRatio": "12:1",
+        "compressorAttackUs": 100.0,
+        "compressorReleaseMs": 150.0
+      }
+    },
+    {
+      "name": "Punchy Dynamics",
+      "settings": {
+        "band1Freq": 110.0,
+        "band1Gain": 2.5,
+        "band3Freq": 2600.0,
+        "band3Gain": 1.5,
+        "compressorEnabled": true,
+        "compressorInputDb": 10.0,
+        "compressorOutputDb": 1.0,
+        "compressorRatio": "8:1",
+        "compressorAttackUs": 50.0,
+        "compressorReleaseMs": 120.0
+      }
+    },
+    {
+      "name": "Loudness",
+      "settings": {
+        "band1Freq": 100.0,
+        "band1Gain": 3.0,
+        "band3Freq": 2600.0,
+        "band3Gain": 2.0,
+        "band4Freq": 8500.0,
+        "band4Gain": 2.0,
+        "compressorEnabled": true,
+        "compressorInputDb": 8.0,
+        "compressorOutputDb": 2.0,
+        "compressorRatio": "4:1",
+        "compressorAttackUs": 250.0,
+        "compressorReleaseMs": 220.0,
+        "limiterCeilingDb": -0.5
+      }
+    },
+    {
+      "name": "Soft Listening",
+      "settings": {
+        "masterGainDb": -6.0,
+        "highPassHz": 50.0,
+        "lowPassHz": 14000.0,
+        "band3Freq": 3000.0,
+        "band3Gain": -1.0,
+        "compressorEnabled": true,
+        "compressorInputDb": 2.0,
+        "compressorRatio": "4:1",
+        "compressorAttackUs": 450.0,
+        "compressorReleaseMs": 350.0
+      }
+    },
+    {
+      "name": "Night Reading",
+      "settings": {
+        "masterGainDb": -10.0,
+        "lowPassHz": 10000.0,
+        "band1Freq": 120.0,
+        "band1Gain": -2.0,
+        "band4Freq": 7500.0,
+        "band4Gain": -3.0,
+        "compressorEnabled": true,
+        "compressorInputDb": 3.0,
+        "compressorRatio": "4:1",
+        "compressorAttackUs": 500.0,
+        "compressorReleaseMs": 400.0
+      }
+    },
+    {
+      "name": "Wide Chorus",
+      "settings": {
+        "chorusEnabled": true,
+        "chorusMode": "I+II",
+        "chorusDepth": 55.0,
+        "chorusRate": 45.0,
+        "chorusWidth": 100.0,
+        "chorusMix": 28.0
+      }
+    },
+    {
+      "name": "Classic Chorus",
+      "settings": {
+        "chorusEnabled": true,
+        "chorusMode": "I",
+        "chorusDepth": 60.0,
+        "chorusRate": 35.0,
+        "chorusWidth": 80.0,
+        "chorusMix": 35.0
+      }
+    },
+    {
+      "name": "Slapback",
+      "settings": {
+        "delayEnabled": true,
+        "delayTimeMs": 95.0,
+        "delayFeedback": 12.0,
+        "delayMix": 18.0,
+        "delayPingPong": 30.0
+      }
+    },
+    {
+      "name": "Ping Pong Delay",
+      "settings": {
+        "delayEnabled": true,
+        "delayTimeMs": 320.0,
+        "delayFeedback": 35.0,
+        "delayMix": 25.0,
+        "delayPingPong": 100.0
+      }
+    },
+    {
+      "name": "Small Room",
+      "settings": {
+        "reverbEnabled": true,
+        "reverbSize": 25.0,
+        "reverbDecaySec": 0.7,
+        "reverbDamping": 60.0,
+        "reverbMix": 12.0
+      }
+    },
+    {
+      "name": "Large Hall",
+      "settings": {
+        "reverbEnabled": true,
+        "reverbSize": 80.0,
+        "reverbDecaySec": 3.0,
+        "reverbDamping": 45.0,
+        "reverbMix": 22.0
+      }
+    },
+    {
+      "name": "Ambient Space",
+      "settings": {
+        "chorusEnabled": true,
+        "chorusMode": "I+II",
+        "chorusDepth": 45.0,
+        "chorusRate": 30.0,
+        "chorusWidth": 100.0,
+        "chorusMix": 20.0,
+        "delayEnabled": true,
+        "delayTimeMs": 420.0,
+        "delayFeedback": 30.0,
+        "delayMix": 15.0,
+        "delayPingPong": 100.0,
+        "reverbEnabled": true,
+        "reverbSize": 90.0,
+        "reverbDecaySec": 4.0,
+        "reverbDamping": 35.0,
+        "reverbMix": 25.0
+      }
+    },
+    {
+      "name": "Moving Pan",
+      "settings": {
+        "panLfoWave": "Sine",
+        "panLfoRateHz": 0.35,
+        "panLfoSmooth": 15.0,
+        "panLfoDepth": 80.0
+      }
+    }
+  ]
+}

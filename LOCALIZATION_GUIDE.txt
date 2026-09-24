@@ -1,0 +1,33 @@
+NVDA Audio Processor - localization rule (version 1.0)
+
+English is the source language.
+
+IMPORTANT: DSP/effect/parameter terminology follows a VST-style convention and must remain in standard English in every locale. Pure technical labels are intentionally not included in nvda.pot.
+
+Examples that must remain English:
+Low Pass, High Pass, Band 1 Frequency, Gain, Q, Master Gain, 1176 Compressor, Input, Output, Attack, Release, Ratio, Pan, Pan LFO, Waveform, Rate, Smoothing, Depth, Stereo Chorus, Chorus Mode, Width, Mix, Stereo Delay, Time, Feedback, Send, Ping-Pong, Stereo Reverb, Size, Decay, Damping, Limiter, Ceiling, Sine, Triangle, Saw, Square, S&H.
+
+Factory preset names are also kept in English, as in audio plug-ins. The surrounding preset-management interface and messages are localized.
+
+Translate the surrounding NVDA interaction language, messages, states, errors and action descriptions.
+
+Examples:
+English source: Enable or disable Stereo Chorus.
+Italian: Attiva o disattiva Stereo Chorus.
+
+English source: Increase Low Pass Frequency.
+Italian: Aumenta Low Pass Frequency.
+
+English source: Preset saved: {name}
+Italian: Preset salvato: {name}
+
+Do not alter internal JSON values or identifiers.
+
+Locales included in version 1.0:
+- en: English source/fallback
+- it: Italian
+- es: Spanish
+- fr: French
+
+Documentation is included in doc/en, doc/it, doc/es and doc/fr.
+The Spanish, French and Italian catalogs and documents follow the same rule: technical DSP terms embedded in translated sentences are preserved in English.
