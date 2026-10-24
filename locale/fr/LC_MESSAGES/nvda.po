@@ -1,6 +1,7 @@
 # French translations for NVDA Audio Processor.
 # Copyright (C) 2026 ORGANIZATION
-# This file is distributed under the same license as the NVDA Audio Processor project.
+# This file is distributed under the same license as the NVDA Audio Processor
+# project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 #, fuzzy
@@ -579,3 +580,16 @@ msgstr "{source}→{output} canaux"
 #, python-brace-format
 msgid "{streamInfo} Status: {state}. Processed chunks: {chunks}."
 msgstr "{streamInfo} État : {state}. Blocs traités : {chunks}."
+
+msgid "Audio benchmark diagnostic copied to clipboard"
+msgstr "Diagnostic de benchmark audio copié dans le presse-papiers"
+
+msgid "Copy the pre-mixer audio benchmark diagnostic to the clipboard."
+msgstr "Copier dans le presse-papiers le diagnostic de benchmark audio pré-mixeur."
+
+msgid "Select the next Reverb Type."
+msgstr "Sélectionner le type de réverbération suivant."
+
+msgid "Select the previous Reverb Type."
+msgstr "Sélectionner le type de réverbération précédent."
+

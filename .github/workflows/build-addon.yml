@@ -19,6 +19,9 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Reverb DSP regression tests
+        run: python -B tests/test_reverb_modes.py
+
       - name: Build add-on
         run: python build.py
 

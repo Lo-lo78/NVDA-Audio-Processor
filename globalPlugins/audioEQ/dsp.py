@@ -6,6 +6,10 @@ import sys
 
 SQRT_HALF = 0.7071067811865476
 
+# Stable internal values used by the accessible Reverb Type combo and presets.
+# Classic preserves the TEST61 Schroeder network, including its coefficients.
+REVERB_MODES = ("Classic", "Room", "Chamber", "Hall", "Cathedral", "Plate", "Spring")
+
 # Lookup table for a 0 dB-centre balance pan law.  The louder side remains
 # at unity while the opposite side is progressively attenuated.  This avoids
 # the audible ~3 dB jump that occurred when mono speech was recreated as a
@@ -418,9 +422,15 @@ class _AllPass:
 
 
 class StereoReverb:
-    """Small Schroeder-style stereo reverb tuned for low CPU and screen-reader use."""
+    """Seven low-CPU stereo reverb structures, using six combs/two all-passes.
 
-    __slots__ = ("mix", "combs_l", "combs_r", "ap_l", "ap_r")
+    Classic is bit-for-bit compatible with the TEST61 implementation. Other
+    types have their own delay-time ratios, decay envelopes, damping, stereo
+    cross-feed and diffusion. Spring is a lightweight spring-*inspired* model,
+    not a physical convolution model of a particular hardware spring tank.
+    """
+
+    __slots__ = ("mix", "combs_l", "combs_r", "ap_l", "ap_r", "crossfeed", "tail_decay_scale", "mode")
 
     def __init__(self, sample_rate, settings):
         sr = float(sample_rate)
@@ -428,23 +438,82 @@ class StereoReverb:
         size = _clamp(float(settings.get("reverbSize", 50.0)), 0.0, 100.0) / 100.0
         decay = _clamp(float(settings.get("reverbDecaySec", 1.2)), 0.1, 5.0)
         damping = _clamp(float(settings.get("reverbDamping", 50.0)), 0.0, 100.0) / 100.0
-        scale = 0.72 + size * 0.62
-        base_l = (0.0297, 0.0371, 0.0411)
-        base_r = (0.0309, 0.0383, 0.0437)
-        damp = damping * 0.92
+        mode = str(settings.get("reverbMode", "Classic"))
+        self.mode = mode if mode in REVERB_MODES else "Classic"
+        self.tail_decay_scale = 1.0
+        self.crossfeed = 0.45
+        spring_polarity = False
+
+        if self.mode == "Classic":
+            # Delays, gains and arithmetic match TEST61 exactly. Presets lacking
+            # reverbMode are transparently interpreted as Classic.
+            scale = 0.72 + size * 0.62
+            base_l = (0.0297, 0.0371, 0.0411)
+            base_r = (0.0309, 0.0383, 0.0437)
+            damp = damping * 0.92
+            ap_l_time, ap_r_time = 0.0050 + 0.0020 * size, 0.0057 + 0.0022 * size
+            ap_feedback = 0.5
+        else:
+            # (L comb times, R comb times, scale base, scale size, T60 ratio,
+            #  damping ratio, L/R diffusion times base+size, all-pass feedback,
+            #  stereo crossfeed). Same CPU-sized architecture for every mode.
+            specs = {
+                "Room": (
+                    (0.0127, 0.0191, 0.0277), (0.0141, 0.0217, 0.0293),
+                    0.70, 0.50, 0.75, 0.75, 0.0022, 0.0015, 0.0029, 0.0016, 0.36, 0.24,
+                ),
+                "Chamber": (
+                    (0.0227, 0.0301, 0.0367), (0.0247, 0.0323, 0.0391),
+                    0.80, 0.60, 1.00, 0.78, 0.0042, 0.0016, 0.0048, 0.0018, 0.58, 0.38,
+                ),
+                "Hall": (
+                    (0.0371, 0.0451, 0.0559), (0.0389, 0.0487, 0.0593),
+                    0.86, 0.80, 1.30, 0.90, 0.0080, 0.0030, 0.0091, 0.0032, 0.68, 0.58,
+                ),
+                "Cathedral": (
+                    (0.0631, 0.0811, 0.1031), (0.0683, 0.0863, 0.1093),
+                    0.98, 0.88, 1.65, 0.93, 0.0120, 0.0030, 0.0137, 0.0034, 0.73, 0.68,
+                ),
+                "Plate": (
+                    (0.0177, 0.0221, 0.0259), (0.0187, 0.0239, 0.0281),
+                    0.78, 0.65, 1.10, 0.48, 0.0033, 0.0016, 0.0039, 0.0019, 0.72, 0.52,
+                ),
+                "Spring": (
+                    (0.0093, 0.0167, 0.0269), (0.0109, 0.0181, 0.0287),
+                    0.74, 0.48, 0.80, 0.26, 0.0011, 0.0022, 0.0014, 0.0021, 0.40, 0.28,
+                ),
+            }
+            (
+                base_l, base_r, scale_base, scale_size,
+                self.tail_decay_scale, damping_ratio,
+                ap_l_base, ap_l_size, ap_r_base, ap_r_size,
+                ap_feedback, self.crossfeed,
+            ) = specs[self.mode]
+            scale = scale_base + size * scale_size
+            decay *= self.tail_decay_scale
+            damp = damping * 0.92 * damping_ratio
+            ap_l_time = ap_l_base + ap_l_size * size
+            ap_r_time = ap_r_base + ap_r_size * size
+            spring_polarity = self.mode == "Spring"
 
         def make_combs(times):
             result = []
-            for t in times:
+            for index, t in enumerate(times):
                 delay_sec = t * scale
                 feedback = 10.0 ** (-3.0 * delay_sec / decay)
-                result.append(_Comb(int(sr * delay_sec), min(0.985, feedback), damp))
+                # Negative feedback on the middle spring delay creates the
+                # alternating, metallic resonance of a small spring tank.
+                if spring_polarity and index == 1:
+                    feedback = -min(0.985, feedback)
+                else:
+                    feedback = min(0.985, feedback)
+                result.append(_Comb(int(sr * delay_sec), feedback, damp))
             return result
 
         self.combs_l = make_combs(base_l)
         self.combs_r = make_combs(base_r)
-        self.ap_l = _AllPass(int(sr * (0.0050 + 0.0020 * size)), 0.5)
-        self.ap_r = _AllPass(int(sr * (0.0057 + 0.0022 * size)), 0.5)
+        self.ap_l = _AllPass(int(sr * ap_l_time), ap_feedback)
+        self.ap_r = _AllPass(int(sr * ap_r_time), ap_feedback)
 
     def process_wet(self, left, right):
         """Process one frame and return only the room response (100% wet).
@@ -457,8 +526,8 @@ class StereoReverb:
         # Reverb follows the source pan only partially. A 45% cross-feed keeps
         # the dominant side clear while leaving an audible room response on
         # the opposite side, even with a hard-panned source.
-        in_l = left + right * 0.45
-        in_r = right + left * 0.45
+        in_l = left + right * self.crossfeed
+        in_r = right + left * self.crossfeed
 
         c0, c1, c2 = self.combs_l
         buf = c0.buffer
@@ -708,7 +777,7 @@ _EQ_STATE_KEYS = (
     "band4Freq", "band4Gain", "band4Q",
     "lowPassHz", "lowPassResonance", "lowPassLfoDepth",
 )
-_REVERB_STRUCTURE_KEYS = ("reverbSize", "reverbDecaySec", "reverbDamping")
+_REVERB_STRUCTURE_KEYS = ("reverbMode", "reverbSize", "reverbDecaySec", "reverbDamping")
 
 
 def _settings_signature(settings, keys):

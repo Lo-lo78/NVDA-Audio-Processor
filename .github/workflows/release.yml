@@ -1,0 +1,33 @@
+name: Release NVDA add-on
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Reverb DSP regression tests
+        run: python -B tests/test_reverb_modes.py
+
+      - name: Build add-on
+        run: python build.py
+
+      - name: Create GitHub release and upload package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.nvda-addon --generate-notes --title "$GITHUB_REF_NAME"

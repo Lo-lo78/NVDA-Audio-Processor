@@ -17,6 +17,7 @@ from logHandler import log
 from . import storage as _storage
 from . import deviceRouting as _deviceRouting
 from . import audioRuntime as _audioRuntime
+from .dsp import REVERB_MODES
 
 addonHandler.initTranslation()
 
@@ -86,6 +87,7 @@ _DEFAULTS = {
     "delayBeforeReverb": False,
     "chainBlend": 0.0,
     "reverbEnabled": False,
+    "reverbMode": "Classic",
     "reverbSize": 50.0,
     "reverbDecaySec": 1.2,
     "reverbDamping": 50.0,
@@ -678,6 +680,14 @@ class AudioEQDialog(wx.Dialog):
         self.reverbTailEnabled.SetName(_("Reverb tail enabled"))
         self.reverbTailEnabled.SetValue(bool(settings.get("reverbTailEnabled", False)))
         body.Add(self.reverbTailEnabled, 0, wx.BOTTOM, 4)
+        row = wx.BoxSizer(wx.HORIZONTAL)
+        row.Add(wx.StaticText(self, label="Reverb Type:"), 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 8)
+        self.reverbMode = wx.Choice(self, choices=list(REVERB_MODES))
+        self.reverbMode.SetName("Reverb Type")
+        mode = str(settings.get("reverbMode", "Classic"))
+        self.reverbMode.SetSelection(REVERB_MODES.index(mode) if mode in REVERB_MODES else 0)
+        row.Add(self.reverbMode, 1, wx.EXPAND)
+        body.Add(row, 0, wx.EXPAND | wx.BOTTOM, 4)
         row, self.reverbSize = _numericCombo(self, "Reverb Size 0-100:", settings["reverbSize"], 0, 100, 5, 0, steps=[1, 5, 10, 25])
         body.Add(row, 0, wx.EXPAND | wx.BOTTOM, 4)
         row, self.reverbDecay = _numericCombo(self, "Reverb Decay seconds:", settings["reverbDecaySec"], 0.1, 5, 0.1, 2, steps=[0.05, 0.1, 0.25, 0.5, 1])
@@ -891,6 +901,7 @@ class AudioEQDialog(wx.Dialog):
             self._setNumericControlValue(self.delayMix, values["delayMix"])
             self._setNumericControlValue(self.delayPingPong, values["delayPingPong"])
             self.reverbEnabled.SetValue(bool(values["reverbEnabled"]))
+            self._setChoiceByValue(self.reverbMode, REVERB_MODES, values.get("reverbMode", "Classic"))
             self.reverbTailEnabled.SetValue(bool(values.get("reverbTailEnabled", False)))
             self._setNumericControlValue(self.reverbSize, values["reverbSize"])
             self._setNumericControlValue(self.reverbDecay, values["reverbDecaySec"])
@@ -1191,6 +1202,7 @@ class AudioEQDialog(wx.Dialog):
             "delayMix": _numericValue(self.delayMix, self._originalSettings["delayMix"]),
             "delayPingPong": _numericValue(self.delayPingPong, self._originalSettings["delayPingPong"]),
             "reverbEnabled": self.reverbEnabled.IsChecked(),
+            "reverbMode": REVERB_MODES[max(0, self.reverbMode.GetSelection())],
             "reverbTailEnabled": self.reverbTailEnabled.IsChecked(),
             "reverbSize": _numericValue(self.reverbSize, self._originalSettings["reverbSize"]),
             "reverbDecaySec": _numericValue(self.reverbDecay, self._originalSettings["reverbDecaySec"]),
@@ -1221,6 +1233,7 @@ class AudioEQDialog(wx.Dialog):
         self.delayTailEnabled.Bind(wx.EVT_CHECKBOX, self._onLiveChanged)
         self.delayBeforeReverb.Bind(wx.EVT_CHECKBOX, self._onLiveChanged)
         self.reverbEnabled.Bind(wx.EVT_CHECKBOX, self._onLiveChanged)
+        self.reverbMode.Bind(wx.EVT_CHOICE, self._onLiveChanged)
         self.reverbTailEnabled.Bind(wx.EVT_CHECKBOX, self._onLiveChanged)
         self.limiterEnabled.Bind(wx.EVT_CHECKBOX, self._onLiveChanged)
 
@@ -1374,6 +1387,16 @@ def _changeNumericSetting(key, direction):
         spoken = f"{value:.{digits}f}".rstrip("0").rstrip(".")
     suffix = f" {unit}" if unit else ""
     ui.message("{label} {value}{unit}".format(label=label, value=spoken, unit=suffix))
+
+
+def _changeReverbMode(direction):
+    settings, settingsRevision = _getSettingsSnapshot()
+    current = str(settings.get("reverbMode", "Classic"))
+    index = REVERB_MODES.index(current) if current in REVERB_MODES else 0
+    selected = REVERB_MODES[(index + direction) % len(REVERB_MODES)]
+    settings["reverbMode"] = selected
+    _updateSettings(settings)
+    ui.message("Reverb Type {mode}".format(mode=selected))
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
@@ -1787,6 +1810,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         settings["reverbTailEnabled"] = not bool(settings.get("reverbTailEnabled", False))
         _updateSettings(settings)
         ui.message(_("Reverb tail enabled") if settings["reverbTailEnabled"] else _("Reverb tail disabled"))
+
+    @scriptHandler.script(description=_("Select the next Reverb Type."), category=_("Audio Processor"))
+    def script_nextAudioEQReverbMode(self, gesture):
+        _changeReverbMode(1)
+
+    @scriptHandler.script(description=_("Select the previous Reverb Type."), category=_("Audio Processor"))
+    def script_previousAudioEQReverbMode(self, gesture):
+        _changeReverbMode(-1)
 
     @scriptHandler.script(description=_("Increase Reverb Size."), category=_("Audio Processor"))
     def script_increaseAudioEQReverbSize(self, gesture):

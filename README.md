@@ -2,7 +2,7 @@
 
 Audio Processor is a real-time multi-effect audio processor for the NVDA screen reader. It intercepts audio that uses NVDA's `nvwave/WavePlayer` path and can process speech, NVDA sounds, or both.
 
-Current source version: **1.0.60 (TEST60)**.
+Current source version: **1.0.62 (TEST62)**.
 
 ## Main features
 
@@ -13,6 +13,7 @@ Current source version: **1.0.60 (TEST60)**.
 - Shared Free/Trigger LFO for Pan, Low Pass and High Pass.
 - Stereo Chorus.
 - Stereo Delay and Stereo Reverb with selectable serial order.
+- Reverb Type selector: Classic, Room, Chamber, Hall, Cathedral, Plate and Spring.
 - Chain Blend control for the Delay/Reverb serial return.
 - Limiter.
 - Optional preset-aware NVDA Audio Device Lock.
@@ -20,6 +21,22 @@ Current source version: **1.0.60 (TEST60)**.
 - 32 Factory presets plus User presets.
 - Custom Actions API integration.
 - Documentation and localization in English, Italian, Spanish and French.
+
+## Reverb Type (TEST62)
+
+In the Audio Processor dialog, use **Tab** to reach **Reverb Type** after the
+Reverb Tail checkbox and use Up/Down to choose an acoustic character. The
+change is applied live. The seven types use different network configurations,
+not just parameter presets. Reverb Size, Decay, Damping and Send continue to
+work for every type. `Classic` is the original TEST61 algorithm, unchanged.
+Previously saved settings, factory presets and user presets without the new key
+remain on `Classic`, preserving their sound. The choice is saved in complete
+user presets and Custom Actions snapshots.
+
+You can also assign gestures to **Select the next Reverb Type** and **Select
+the previous Reverb Type** in NVDA's Input Gestures, Audio Processor category.
+The Spring type is an inexpensive digital spring-inspired algorithm, not an
+impulse-response emulation of a specific physical spring tank.
 
 ## Compatibility
 

@@ -1,6 +1,7 @@
 # Translations template for NVDA Audio Processor.
 # Copyright (C) 2026 ORGANIZATION
-# This file is distributed under the same license as the NVDA Audio Processor project.
+# This file is distributed under the same license as the NVDA Audio Processor
+# project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 #, fuzzy
@@ -574,3 +575,10 @@ msgstr ""
 #, python-brace-format
 msgid "{streamInfo} Status: {state}. Processed chunks: {chunks}."
 msgstr ""
+
+msgid "Select the next Reverb Type."
+msgstr ""
+
+msgid "Select the previous Reverb Type."
+msgstr ""
+

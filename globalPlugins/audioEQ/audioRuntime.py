@@ -371,7 +371,10 @@ def _tailHardLimitSeconds(settings, state, includeDelay, includeReverb):
         # network a little more than one T60, then let the quiet detector decide.
         decay = max(0.1, min(5.0, float(settings.get("reverbDecaySec", 1.2))))
         size = max(0.0, min(100.0, float(settings.get("reverbSize", 50.0)))) / 100.0
-        limit = max(limit, decay * 1.35 + 0.12 + size * 0.08)
+        # Longer Hall/Cathedral network decays need a matching Gate Hold bound.
+        # Classic remains exactly at the TEST61 value.
+        mode_scale = max(1.0, float(getattr(state.reverb, "tail_decay_scale", 1.0)))
+        limit = max(limit, decay * mode_scale * 1.35 + 0.12 + size * 0.08)
     if limit <= 0.0:
         return 0.0
     return min(_GATE_HOLD_MAX_SECONDS, max(0.20, limit))
@@ -1150,11 +1153,30 @@ def _patchedFeed(player, data, size=None, onDone=None):
     speechFeedSeq = None
     isSpeech = getattr(player, '_purpose', None) is nvwave.AudioPurpose.SPEECH
     if isSpeech:
+        # TEST61 startup compatibility: NVDA creates the active speech WavePlayer
+        # before global plugins are loaded. Such an already-existing player has
+        # never passed through our patched __init__, so the speech bookkeeping
+        # attributes introduced by Audio Processor may be missing until the user
+        # changes synthesizer. Initialize only the missing runtime state lazily;
+        # newly-created players keep the exact existing path.
         feedLock = getattr(player, '_nvdaAudioEQSpeechFeedLock', None)
-        if feedLock is not None:
-            with feedLock:
-                player._nvdaAudioEQSpeechFeedSeq = int(getattr(player, '_nvdaAudioEQSpeechFeedSeq', 0) or 0) + 1
-                speechFeedSeq = player._nvdaAudioEQSpeechFeedSeq
+        if feedLock is None:
+            feedLock = threading.RLock()
+            player._nvdaAudioEQSpeechFeedLock = feedLock
+            player._nvdaAudioEQSpeechFeedSeq = int(
+                getattr(player, '_nvdaAudioEQSpeechFeedSeq', 0) or 0
+            )
+            if not hasattr(player, '_nvdaAudioEQSpeechMixer'):
+                player._nvdaAudioEQSpeechMixer = None
+            if not hasattr(player, '_nvdaAudioEQSpeechMixerUsedSinceIdle'):
+                player._nvdaAudioEQSpeechMixerUsedSinceIdle = False
+            if not hasattr(player, '_nvdaAudioEQSpeechPcmSinceIdleMs'):
+                player._nvdaAudioEQSpeechPcmSinceIdleMs = 0.0
+        with feedLock:
+            player._nvdaAudioEQSpeechFeedSeq = int(
+                getattr(player, '_nvdaAudioEQSpeechFeedSeq', 0) or 0
+            ) + 1
+            speechFeedSeq = player._nvdaAudioEQSpeechFeedSeq
         _tailDiag('feed-enter', seq=int(speechFeedSeq))
 
     # Any legacy TEST51 tail is cancelled before new source PCM. TEST53 never
